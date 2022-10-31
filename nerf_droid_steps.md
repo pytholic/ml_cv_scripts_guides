@@ -7,6 +7,11 @@ Put video in folder and run.
 ```
 python3 /home/pytholic/Desktop/Projects/uav_mapping/instant-ngp/scripts/colmap2nerf.py --video_in elevator.MOV --video_fps 10 --run_colmap --aabb_scale 16
 ```
+or use images
+
+```
+python3 /home/pytholic/Desktop/Projects/uav_mapping/instant-ngp/scripts/colmap2nerf.py --images /home/pytholic/Desktop/Projects/uav_mapping/data/iphone/tmp/tmp --run_colmap --aabb_scale 16
+```
 
 **Run nerf**
 
