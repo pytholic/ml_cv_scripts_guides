@@ -3,15 +3,20 @@ import time
 import open3d as o3d
 
 #root_folder = '/home/pytholic/Desktop/Projects/uav_mapping/droid_slam/results/my_results/evo/reconstructions/tmp'
-root_folder = '/home/pytholic/Desktop/Projects/uav_mapping/droid_slam/results/my_results/evo/reconstructions/MAX_0040/ply'
-files = sorted(os.listdir(root_folder))
+root_folder = '/home/pytholic/Desktop/Projects/uav_mapping/droid_slam/results/my_results/iphone/reconstructions/tables/office/desk_1'
+files_list = sorted(os.listdir(root_folder))
+files = [i for i in files_list if i.endswith('.ply')]
+# print(files)
 
 vis = o3d.visualization.VisualizerWithKeyCallback()
 vis.create_window()
 
 zoom = 1
 for file in files:
-    pcd = o3d.io.read_point_cloud(os.path.join(root_folder, file))
+    if file.split('/')[-1] == "points.ply":
+        pcd = o3d.io.read_point_cloud(os.path.join(root_folder, file))
+    elif file.split('/')[-1] == "camera.ply":
+        pcd = o3d.io.read_line_set(os.path.join(root_folder, file))
     vis.add_geometry(pcd)
     vis.poll_events()
     vis.update_renderer()
