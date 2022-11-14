@@ -5,7 +5,6 @@ You might have to tune the parameters to get good results.
 """
 
 import os
-import numpy as np
 
 import open3d as o3d
 
