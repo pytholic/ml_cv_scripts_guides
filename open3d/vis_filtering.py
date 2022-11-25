@@ -12,22 +12,33 @@ from collections import defaultdict
 
 PATH = "./results"
 ZOOM = 1
+
+# Colors rgb
+# COLORS = {
+#         "person": [117,255,126],  # green
+#         "toy_car": [255,54,41],  # red
+#         "toy_plane": [185,119,14],  # brown
+#         "toy_tank": [255,0,255],  # pink
+#         "toy_truck": [117,177,255]  # blue
+# }
+
+# Colors hex
 COLORS = {
-    "person": [0, 255, 0],
-    "chair": [0, 191, 255],
-    "mouse": [80.0, 127.0, 255.0],
-    "keyboard": [99, 49, 222],
-    "phone": [191, 226, 191],
-    "cup": [208, 224, 64],
-    "laptop": [237, 149, 100],
-    "tv": [255, 204, 204],
-    "car": [255, 0, 0],
-    "airplane": [0, 0, 255],
+        "person": "#75ff7e",  # green
+        "toy_car": "#ff3629",  # red
+        "toy_plane": "#B9770E",  # brown
+        "toy_tank": "#FF00FF",  # pink
+        "toy_truck": "#75b1ff"  # blue
 }
 
 
 # Utility functions
 
+def hex2rgb(h):
+    """
+    Function to convert hex into rgb
+    """
+    return tuple(int(h[1 + i:1 + i + 2], 16) for i in (0, 2, 4))
 
 def denormalize(x):
     """
@@ -47,7 +58,7 @@ def is_close(a, b):
     """
     Function to check if pixel values are approximately same.
     """
-    tmp = np.isclose(a, b, atol=5)  # 1
+    tmp = np.isclose(a, b, atol=1)  # 1
     if False not in tmp:
         return True
     else:
@@ -61,11 +72,13 @@ def get_indices(pcd, category):
     indices = []
     colors_original = {}
     for i, color in enumerate(pcd.colors):
-        color = color * 255  # denormalize
-        res = is_close(list(color), COLORS[category][::-1])
+        color = denormalize(color)  # denormalize
+        color2 = hex2rgb(COLORS[category])
+        #color2 = hex2rgb(COLORS[category])[::-1]
+        res = is_close(list(color), color2)
         if res == False:
             indices.append(i)
-            colors_original[i] = color / 255  # normalize
+            colors_original[i] = normalize(color)  # normalize
 
     return indices, colors_original
 
@@ -183,7 +196,7 @@ vis.register_key_callback(ord("E"), rotate_view_down)
 for i, (k, v) in enumerate(COLORS.items()):
     vis.register_key_callback(ord(str(i)), partial(filter, cls=k))
 
-vis.register_key_callback(ord("0"), show_original)
+vis.register_key_callback(ord("`"), show_original)
 
 vis.add_geometry(pcd)
 vis.add_geometry(poses)
