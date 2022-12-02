@@ -1,4 +1,6 @@
 ```
+ffmpeg -i abc.mp4 image%06d.jpg  # extract all frames
+
 ffmpeg -i input.avi output.mp4  # convert video
 
 ffmpeg -i filtering.webm -s 1920x1080 -vsync 2 filtering.mp4  # avoid mp4 issues
