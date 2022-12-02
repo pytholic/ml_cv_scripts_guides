@@ -51,6 +51,13 @@ Need to test it on the server with X11.
 
 Using on the remote server with RDP. Got the mask results for a sample.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3cdef5d1-839a-4c95-a454-4c909feb0eeb/Untitled.png)
+![Untitled](/home/pytholic/Desktop/Projects/video_inpainting/sample_data/tmp/joined.png)
 
 Also found a tool `imagemagick` to combine images in Linux.
+
+```
+convert img1.png img2.png +append joined_horizontal.png
+convert img1.png img2.png -append joined_vertical.png
+
+convert img1.png img2.png -resize x512 +append joined_horizontal.png
+```
