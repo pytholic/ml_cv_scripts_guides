@@ -51,7 +51,7 @@ Need to test it on the server with X11.
 
 Using on the remote server with RDP. Got the mask results for a sample.
 
-![joined](/home/pytholic/Desktop/Projects/video_inpainting/sample_data/tmp/joined.png)
+![joined](joined.png)
 
 Also found a tool `imagemagick` to combine images in Linux.
 
