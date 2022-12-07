@@ -3,6 +3,7 @@ https://www.youtube.com/watch?v=U6vr3iNrwRA&list=PLgnQpQtFTOGQrZ4O5QzbIHgl3b1JHi
 
 # Courses
 coursera.org/lecture/robotics-perception/visual-odometry-ReEv0
+
 https://www.coursera.org/learn/3d-reconstruction-multiple-viewpoints
 
 # Books
