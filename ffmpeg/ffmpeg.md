@@ -11,5 +11,5 @@ for i in *.webm; do ffmpeg -i "$i" "${i%.*}.mp4"; done  # convert all videos
 
 ffmpeg -i MAX_0042.MP4 -s 1920x1080 -frames:v 500 ./images/%06d.jpg  # -frames:v 500 limites ending frames
 
-ffmpeg -i MAX_0042.MP4 -s 1920x1080 -start_number 500 ./images/%06d.jpg  # start from a a soecifix frame
+ffmpeg -i MAX_0042.MP4 -s 1920x1080  -ss 10 ./images/%06d.jpg  # skip first 10 secs
 ```
