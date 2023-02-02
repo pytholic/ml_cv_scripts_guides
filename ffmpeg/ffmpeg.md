@@ -15,4 +15,6 @@ ffmpeg -i MAX_0042.MP4 -s 1920x1080  -ss 10 ./images/%06d.jpg  # skip first 10 s
 
 ffmpeg -i out1.mp4 -vf "select=not(mod(n\,10))" -vsync vfr image_%03d.jpg  # extarct every 10th frame
 
+ffmpeg -i test.webm -vf "crop=trunc(iw/2)*2:trunc(ih/2)*2" -vsync 0 output.mp4 
+
 ```
